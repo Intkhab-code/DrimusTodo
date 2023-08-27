@@ -1,6 +1,8 @@
 import './CreateTaskpopup.css';
+import './PopupDeleteTask.css';
 import React, { useState } from 'react';
-function CreateTaskPopup({ onClose}) {
+
+function PopupDeleteTask({ onClose}) {
   const [selectedOption, setSelectedOption] = useState('');
   const [textValue, setTextValue] = useState('');
   const [selectedDate, setSelectedDate] = useState('');
@@ -9,29 +11,29 @@ function CreateTaskPopup({ onClose}) {
     setSelectedOption(event.target.value);
   };
 
-  const handleSave = () => {
-    const taskData = {
-      task: textValue,
-      status: selectedOption,
-      date: selectedDate,
-    };
+  const deleteTask = () => {
+    // const taskData = {
+    //   task: textValue,
+    //   status: selectedOption,
+    //   date: selectedDate,
+    // };
 
-    saveToLocalStorage(taskData); // Save to local storage
-    onClose();
+    // saveToLocalStorage(taskData); // Save to local storage
+    // onClose();
     window.location.reload();
   };
 
 
-  const saveToLocalStorage = (taskData) => {
-    const existingTasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    const updatedTasks = [...existingTasks, taskData];
-    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
-  };
+//   const saveToLocalStorage = (taskData) => {
+//     const existingTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+//     const updatedTasks = [...existingTasks, taskData];
+//     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+//   };
 
   return (
     <div className="popup-overlay">
       <div className="popup">
-        <p className='popup-header'>Create a Task for the team</p>
+        <p className='popup-header'>Edit the Task for the team</p>
         <hr />
         <p className='task-description'>Add task description*</p>
         <textarea placeholder='feed the task guidelines and information'
@@ -80,11 +82,12 @@ function CreateTaskPopup({ onClose}) {
         </label>
         <br />
         <br />
-        <button onClick={handleSave} className='taskSave-button'>Create task</button>
+        <button onClick={deleteTask} className='delete-button'>Delete task</button>
+        <button className='update-button'>update task</button>
         {/* <button onClick={onClose}>Close</button> */}
       </div>
     </div>
   );
 }
 
-export default CreateTaskPopup;
+export default PopupDeleteTask

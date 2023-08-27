@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Main.css';
 import logo from './logo.webp';
+import Popup from "./PopupDeleteTask";
 
 
 
@@ -16,21 +17,33 @@ function Main() {
   let doneData = []
   useEffect(() => {
     test && test.map((e, i) => {
-      if (e.status === 'option1') {
+      if (e.status === 'To do' && e.status!=='') {
         return testDAta.push(e)
-      } else if (e.status === 'option2') {
+      } else if (e.status === 'In progress' && e.status!=='') {
         return progressData.push(e)
-      } else {
+      } else if(e.status === 'Task done' && e.status!==''){
         return doneData.push(e)
       }
     })
-
+    
     setTodo(testDAta)
     setProgress(progressData)
     setDone(doneData)
   }, [])
 
-  console.log(todo)
+
+  // popup
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
+    const [isOpen, setIsOpen] = useState(false);
+  
+    const toggleDropdown = () => {
+      setIsOpen(!isOpen);
+    };
+
   return (
     <>
       <div className='main'>
@@ -44,7 +57,8 @@ function Main() {
             <hr className='todo-hr' />
             {todo && todo.length > 0 ? todo.map((e, i) => {
               return (
-                <div key={i} className='todo-task'><p>{e.task}</p>
+                <div key={i} className='todo-task' onClick={togglePopup}><p>{e.task}</p>
+                <p className='due-date'>Due date: {e.date}</p>
                 </div>
               )
             }) : ''}
@@ -55,6 +69,7 @@ function Main() {
               return (
                 <div key={i} className='todo-task'><p>{e.task}
                 </p>
+                <p className='due-date'>Due date: {e.date}</p>
                 </div>
               )
             }) : ''}
@@ -65,6 +80,7 @@ function Main() {
               return (
                 <div key={i} className='todo-task'>
                   <p>{e.task}</p>
+                  <p className='due-date'>Due date: {e.date}</p>
                 </div>
               )
             }) : ''}
@@ -73,6 +89,7 @@ function Main() {
       </div>
       <div>
       </div>
+      {isPopupOpen && <Popup onClose={togglePopup} />}
     </>
   )
 }

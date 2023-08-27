@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import AvatarEditor from 'react-avatar-editor';
 
-
 function Header() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -36,7 +35,8 @@ function Header() {
       <div className='left-header'>
         <div><button className='create-button' onClick={togglePopup}><span>+</span> Create Task</button></div>
         <div><hr className='hr'/></div>
-        <div className='searchBar'><input placeholder='Search your query' className='search-input'/></div>
+        <div className='searchBar'><input placeholder='Search your query' className='search-input'/>
+        </div>
       </div>
       <div className='right-header'>
         <div className='naming-input-box'>

@@ -1,0 +1,36 @@
+.delete-button {
+    width: 152px;
+    height: 34px;
+    outline: none;
+    border-radius: 10px;
+    border-style: none;
+    background: #BC2121;
+    font-family: Montserrat;
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #ffff;
+    text-align: center;
+    align-items: center;
+}
+
+.update-button {
+    width: 152px;
+    height: 34px;
+    background: #219EBC;
+    outline: none;
+    border-radius: 10px;
+    border-style: none;
+    margin-left: 10px;
+    font-family: Montserrat;
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #ffff;
+    text-align: center;
+    align-items: center;
+}
