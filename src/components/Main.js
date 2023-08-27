@@ -67,7 +67,7 @@ function Main() {
             <hr className='todo-hr' />
             {progress && progress.length > 0 ? progress.map((e, i) => {
               return (
-                <div key={i} className='todo-task'><p>{e.task}
+                <div key={i} className='todo-task' onClick={togglePopup}><p>{e.task}
                 </p>
                 <p className='due-date'>Due date: {e.date}</p>
                 </div>
@@ -78,7 +78,7 @@ function Main() {
             <hr className='todo-hr' />
             {done && done.length > 0 ? done.map((e, i) => {
               return (
-                <div key={i} className='todo-task'>
+                <div key={i} className='todo-task' onClick={togglePopup}>
                   <p>{e.task}</p>
                   <p className='due-date'>Due date: {e.date}</p>
                 </div>
